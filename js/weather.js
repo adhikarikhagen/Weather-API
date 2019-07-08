@@ -22,10 +22,10 @@ function init(resultFromServer) {
 
     document.getElementById('humid').innerHTML = `Humidity:  ${
       localCity.main.humidity
-   }`;
+   }%`;
     document.getElementById('windspeed').innerHTML = `WindSpeed:  ${
       localCity.wind.speed
-   }`;
+   }mph`;
     document.getElementById('descp').innerHTML =
         resultFromServer.weather[0].description;
     let weatherIcon = document.getElementById('icon');
@@ -53,5 +53,13 @@ document.getElementById('search_btn').addEventListener('click', () => {
     let searchTerm = document.getElementById('search_city').value;
     if (searchTerm) {
         searchWeather(searchTerm);
+    }
+});
+document.addEventListener('keypress', e => {
+    if (e.keyCode == 13) {
+        let searchTerm = document.getElementById('search_city').value;
+        if (searchTerm) {
+            searchWeather(searchTerm);
+        }
     }
 });
